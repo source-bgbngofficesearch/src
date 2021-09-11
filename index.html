@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<title>EPF Bengaluru Regional Office Search</title>
+<!-- ****** favicon references ****** -->
+<link rel="shortcut icon" href="/src/Images/favicon/favicon.ico?v=1.0">
+<link rel="icon" sizes="16x16 32x32 64x64" href="/src/Images/favicon/favicon.ico?v=1.0">
+<link rel="icon" type="image/png" sizes="196x196" href="/src/Images/favicon/favicon-192.png?v=1.0">
+<link rel="icon" type="image/png" sizes="160x160" href="/src/Images/favicon/favicon-160.png?v=1.0">
+<link rel="icon" type="image/png" sizes="96x96" href="/src/Images/favicon/favicon-96.png?v=1.0">
+<link rel="icon" type="image/png" sizes="64x64" href="/src/Images/favicon/favicon-64.png?v=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="/src/Images/favicon/favicon-32.png?v=1.0">
+<link rel="icon" type="image/png" sizes="16x16" href="/src/Images/favicon/favicon-16.png?v=1.0">
+<link rel="apple-touch-icon" href="/src/Images/favicon/favicon-57.png?v=1.0">
+<link rel="apple-touch-icon" sizes="114x114" href="/src/Images/favicon/favicon-114.png?v=1.0">
+<link rel="apple-touch-icon" sizes="72x72" href="/src/Images/favicon/favicon-72.png?v=1.0">
+<link rel="apple-touch-icon" sizes="144x144" href="/src/Images/favicon/favicon-144.png?v=1.0">
+<link rel="apple-touch-icon" sizes="60x60" href="/src/Images/favicon/favicon-60.png?v=1.0">
+<link rel="apple-touch-icon" sizes="120x120" href="/src/Images/favicon/favicon-120.png?v=1.0">
+<link rel="apple-touch-icon" sizes="76x76" href="/src/Images/favicon/favicon-76.png?v=1.0">
+<link rel="apple-touch-icon" sizes="152x152" href="/src/Images/favicon/favicon-152.png?v=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/src/Images/favicon/favicon-180.png?v=1.0">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+<meta name="msapplication-TileImage" content="/src/Images/favicon/favicon-144.png?v=1.0">
+<meta name="msapplication-config" content="/src/Images/favicon/browserconfig.xml">
+<!-- ****** favicon references ends ****** -->
+
+<style>
+html, body {
+  height: 100%;
+  font-family: verdana;
+  text-align: center;
+  color: rgb(20, 28, 124);
+}
+
+/* Full height image */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("/src/Images/DefaultBackground.jpeg");
+  min-height: 100%;
+  max-width: 100%;
+  margin: 0 0;
+}
+
+.btn {
+   align-items: center;
+   height: 40px;
+   width: 100px;
+   outline: none;
+   margin: auto;
+   margin-left:10px;
+   border: 0;
+   border-radius: 5px;
+   box-shadow: 2px 2px 2px #666;
+   background: #d34836;
+   color: #fff;
+   cursor: pointer;
+   column-gap: 3px;
+   
+   font-size: 16px;
+}
+.btn:hover {
+   transform: scale(1.03);
+}
+.footer {
+  width: 100%;
+  margin-top: 200px;
+  text-align: center;
+}
+mark { 
+  background-color: rgb(180, 180, 169);
+  border-radius: 5px;
+}
+</style>
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+<div class="bgimg-1">
+  <br><br><br><br><br><br><br><br>
+  <form action="EstablishmentIDinput" method="get">
+    <div class = "input-form">
+      <h1>Enter the Establishment ID to identify your EPF office</h1><br>
+      <input type="text" id="id" name="estid"  style="font-size:20px;" pattern="[A-Za-z0-9]" title="Enter a valid 15 character Etablishment ID, no special characters allowed"><br>
+      <p><i>Sample Establishment ID: BGBNG0012345000</i></p><br>
+      <input class="btn" type="button" value="Submit" onClick="getEstInfo()">
+      <input class="btn" type="reset" value="Reset" onClick="resetfunc()">
+    </div>
+  </form>
+
+  <br/>
+  <div id="output" style = "background-color:rgb(0, 173, 204);"></div>
+  <div class="footer">
+      <p><mark><q>Page developed and maintained in-house as a reference for the EPF Bengaluru RO based establishments alone</q></mark></p>
+    </div>
+</div>
+
+<script>
+//Main function to match the establishment ID against the available list as per the user input
+function getEstInfo() {
+  var userInput = document.getElementById('id').value;
+
+  //Replacing any special input character with _ to avoid exceptions
+  var userInputSplRemoved = userInput.replace(/[\W_]/g, "_");
+  
+  var userInputLen = userInputSplRemoved.length;
+  var userInputUpper = userInputSplRemoved.toUpperCase();
+  var isInputValid = true;
+  
+  //Condition to check for special characters in the user input
+  var letterNumber = /[0-9a-zA-Z]+$/;
+  if(!(userInputUpper.match(letterNumber))){
+   isInputValid = false;
+  }
+
+  var statusFlag = 0;
+  var patternChk = new RegExp (userInputUpper,"m");
+
+  //Querying data in CEN List
+  var cenData = gettext('https://source-bgbngofficesearch.github.io/src/data/ro-cen.txt');
+  var cenChk = cenData.match(patternChk);
+  if(isInputValid == true && userInputLen == 15 && cenChk == userInputUpper) {
+    statusFlag = 1;
+    $('#output').html('<b>The Establishment ' + userInput + ' is attached to the RO Bangalore : Central</b>');
+    }
+  if(statusFlag == 1){
+    return
+    }
+
+  //Querying data in MWM List
+  var mwmData = gettext('https://source-bgbngofficesearch.github.io/src/data/ro-mwm.txt');
+  var mwmchk = mwmData.match(patternChk);
+  if(isInputValid == true && userInputLen == 15 && mwmchk == userInputUpper) {
+    statusFlag = 1;
+    $('#output').html('<b>The Establishment ' + userInput + ' is attached to the RO Bangalore : Malleswaram</bs>');
+    }
+  if(statusFlag == 1){
+    return
+    }
+
+  //Querying data in YLK List
+  var ylkData = gettext('https://source-bgbngofficesearch.github.io/src/data/ro-ylk.txt');
+  var ylkchk = ylkData.match(patternChk);
+  if(isInputValid == true && userInputLen == 15 && ylkchk == userInputUpper) {
+    statusFlag = 1;
+    $('#output').html('<b>The Establishment ' + userInput + ' is attached to the RO Bangalore : Yelahanka</b>');
+    }
+  if(statusFlag == 1){
+    return
+    }
+
+  //Output for invalid user input
+  $('#output').html('<b>Please enter a valid Establishment ID.</b> <br> It should begin with the region code (eg: BGBNG), followed by the 10 digit establishment unique code.');
+
+}
+
+//Function to fetch the backend list for each office
+function gettext(url) {
+  return ($.ajax({
+    type: 'GET',
+    url: url,
+    dataType: 'jstext',
+    global: false,
+    async: false,
+    success: function (data) {
+      return data;
+    }
+  }).responseText);
+}
+
+//Function to reset the page on button click
+function resetfunc() {
+document.location.reload(true);
+}
+
+//Even Listner to prevent usage of enter key on the form and force the usage of Submit Button
+document.getElementById('id').addEventListener('keypress', function(event) {
+  if (event.keyCode == 13) {
+      event.preventDefault();
+  }
+});
+</script>
+
+</body>
+</html>
