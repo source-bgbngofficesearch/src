@@ -5,26 +5,26 @@
 <head>
 <title>EPF Bengaluru Regional Office Search</title>
 <!-- ****** favicon references ****** -->
-<link rel="shortcut icon" href="/src/Images/favicon/favicon.ico?v=1.0">
-<link rel="icon" sizes="16x16 32x32 64x64" href="/src/Images/favicon/favicon.ico?v=1.0">
-<link rel="icon" type="image/png" sizes="196x196" href="/src/Images/favicon/favicon-192.png?v=1.0">
-<link rel="icon" type="image/png" sizes="160x160" href="/src/Images/favicon/favicon-160.png?v=1.0">
-<link rel="icon" type="image/png" sizes="96x96" href="/src/Images/favicon/favicon-96.png?v=1.0">
-<link rel="icon" type="image/png" sizes="64x64" href="/src/Images/favicon/favicon-64.png?v=1.0">
-<link rel="icon" type="image/png" sizes="32x32" href="/src/Images/favicon/favicon-32.png?v=1.0">
-<link rel="icon" type="image/png" sizes="16x16" href="/src/Images/favicon/favicon-16.png?v=1.0">
-<link rel="apple-touch-icon" href="/src/Images/favicon/favicon-57.png?v=1.0">
-<link rel="apple-touch-icon" sizes="114x114" href="/src/Images/favicon/favicon-114.png?v=1.0">
-<link rel="apple-touch-icon" sizes="72x72" href="/src/Images/favicon/favicon-72.png?v=1.0">
-<link rel="apple-touch-icon" sizes="144x144" href="/src/Images/favicon/favicon-144.png?v=1.0">
-<link rel="apple-touch-icon" sizes="60x60" href="/src/Images/favicon/favicon-60.png?v=1.0">
-<link rel="apple-touch-icon" sizes="120x120" href="/src/Images/favicon/favicon-120.png?v=1.0">
-<link rel="apple-touch-icon" sizes="76x76" href="/src/Images/favicon/favicon-76.png?v=1.0">
-<link rel="apple-touch-icon" sizes="152x152" href="/src/Images/favicon/favicon-152.png?v=1.0">
-<link rel="apple-touch-icon" sizes="180x180" href="/src/Images/favicon/favicon-180.png?v=1.0">
+<link rel="shortcut icon" href="/Images/favicon/favicon.ico?v=1.0">
+<link rel="icon" sizes="16x16 32x32 64x64" href="/Images/favicon/favicon.ico?v=1.0">
+<link rel="icon" type="image/png" sizes="196x196" href="/Images/favicon/favicon-192.png?v=1.0">
+<link rel="icon" type="image/png" sizes="160x160" href="/Images/favicon/favicon-160.png?v=1.0">
+<link rel="icon" type="image/png" sizes="96x96" href="/Images/favicon/favicon-96.png?v=1.0">
+<link rel="icon" type="image/png" sizes="64x64" href="/Images/favicon/favicon-64.png?v=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="/Images/favicon/favicon-32.png?v=1.0">
+<link rel="icon" type="image/png" sizes="16x16" href="/Images/favicon/favicon-16.png?v=1.0">
+<link rel="apple-touch-icon" href="/Images/favicon/favicon-57.png?v=1.0">
+<link rel="apple-touch-icon" sizes="114x114" href="/Images/favicon/favicon-114.png?v=1.0">
+<link rel="apple-touch-icon" sizes="72x72" href="/Images/favicon/favicon-72.png?v=1.0">
+<link rel="apple-touch-icon" sizes="144x144" href="/Images/favicon/favicon-144.png?v=1.0">
+<link rel="apple-touch-icon" sizes="60x60" href="/Images/favicon/favicon-60.png?v=1.0">
+<link rel="apple-touch-icon" sizes="120x120" href="/Images/favicon/favicon-120.png?v=1.0">
+<link rel="apple-touch-icon" sizes="76x76" href="/Images/favicon/favicon-76.png?v=1.0">
+<link rel="apple-touch-icon" sizes="152x152" href="/Images/favicon/favicon-152.png?v=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/Images/favicon/favicon-180.png?v=1.0">
 <meta name="msapplication-TileColor" content="#FFFFFF">
-<meta name="msapplication-TileImage" content="/src/Images/favicon/favicon-144.png?v=1.0">
-<meta name="msapplication-config" content="/src/Images/favicon/browserconfig.xml">
+<meta name="msapplication-TileImage" content="/Images/favicon/favicon-144.png?v=1.0">
+<meta name="msapplication-config" content="/Images/favicon/browserconfig.xml">
 <!-- ****** favicon references ends ****** -->
 
 <style>
@@ -121,7 +121,7 @@ function getEstInfo() {
   var patternChk = new RegExp (userInputUpper,"m");
 
   //Querying data in CEN List
-  var cenData = gettext('https://source-bgbngofficesearch.github.io/src/data/ro-cen.txt');
+  var cenData = gettext('https://bgbngofficesearch.in/data/ro-cen.txt');
   var cenChk = cenData.match(patternChk);
   if(isInputValid == true && userInputLen == 15 && cenChk == userInputUpper) {
     statusFlag = 1;
@@ -132,7 +132,7 @@ function getEstInfo() {
     }
 
   //Querying data in MWM List
-  var mwmData = gettext('https://source-bgbngofficesearch.github.io/src/data/ro-mwm.txt');
+  var mwmData = gettext('https://bgbngofficesearch.in/data/ro-mwm.txt');
   var mwmchk = mwmData.match(patternChk);
   if(isInputValid == true && userInputLen == 15 && mwmchk == userInputUpper) {
     statusFlag = 1;
@@ -143,7 +143,7 @@ function getEstInfo() {
     }
 
   //Querying data in YLK List
-  var ylkData = gettext('https://source-bgbngofficesearch.github.io/src/data/ro-ylk.txt');
+  var ylkData = gettext('https://bgbngofficesearch.in/data/ro-ylk.txt');
   var ylkchk = ylkData.match(patternChk);
   if(isInputValid == true && userInputLen == 15 && ylkchk == userInputUpper) {
     statusFlag = 1;
