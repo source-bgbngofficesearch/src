@@ -95,7 +95,7 @@ mark {
   <br/>
   <div id="output" style = "background-color:rgb(0, 173, 204);"></div>
   <div class="footer">
-      <p><mark><q>Page developed and maintained in-house as a reference for the EPF Bengaluru RO based establishments alone</q></mark></p>
+      <p><mark><q>Link developed and maintained in-house as a reference for Regional Office, Bengaluru covered establishments only</q></mark></p>
     </div>
 </div>
 
@@ -125,7 +125,7 @@ function getEstInfo() {
   var cenChk = cenData.match(patternChk);
   if(isInputValid == true && userInputLen == 15 && cenChk == userInputUpper) {
     statusFlag = 1;
-    $('#output').html('<b>The Establishment ' + userInput + ' is attached to the RO Bangalore : Central</b>');
+    $('#output').html('<b>The establishment ' + userInput + ' is covered under RO, BENGALURU CENTRAL</b>');
     }
   if(statusFlag == 1){
     return
@@ -136,7 +136,7 @@ function getEstInfo() {
   var mwmchk = mwmData.match(patternChk);
   if(isInputValid == true && userInputLen == 15 && mwmchk == userInputUpper) {
     statusFlag = 1;
-    $('#output').html('<b>The Establishment ' + userInput + ' is attached to the RO Bangalore : Malleswaram</bs>');
+    $('#output').html('<b>The establishment ' + userInput + ' is covered under RO, BENGALURU MALLESWARAM</b>');
     }
   if(statusFlag == 1){
     return
@@ -147,7 +147,7 @@ function getEstInfo() {
   var ylkchk = ylkData.match(patternChk);
   if(isInputValid == true && userInputLen == 15 && ylkchk == userInputUpper) {
     statusFlag = 1;
-    $('#output').html('<b>The Establishment ' + userInput + ' is attached to the RO Bangalore : Yelahanka</b>');
+    $('#output').html('<b>The establishment ' + userInput + ' is covered under RO, YELAHANKA</b>');
     }
   if(statusFlag == 1){
     return
